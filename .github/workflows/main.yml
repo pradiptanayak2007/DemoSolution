@@ -16,7 +16,7 @@ jobs:
           echo "Step 2" >> custom_log.txt
 
       - name: Upload Logs as Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: custom-log
           path: custom_log.txt
