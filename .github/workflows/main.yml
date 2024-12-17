@@ -1,4 +1,4 @@
-name: Debug Log Example
+name: Save Logs Example
 
 on: push
 
@@ -9,9 +9,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Add Debug Logs
+      - name: Run Custom Script
         run: |
-          echo "::debug::Starting the build process"
-          echo "::debug::Current branch: $(git rev-parse --abbrev-ref HEAD)"
-          echo "::debug::Listing files in the directory"
-          ls -la
+          echo "Running a custom script"
+          echo "Step 1" >> custom_log.txt
+          echo "Step 2" >> custom_log.txt
+
+      - name: Upload Logs as Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: custom-log
+          path: custom_log.txt
